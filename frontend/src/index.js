@@ -4,10 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LandingPage from './container/LandingPage/LandingPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LandingPage />
+    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
