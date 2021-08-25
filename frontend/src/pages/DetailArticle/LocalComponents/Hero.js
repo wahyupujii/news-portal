@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from "react-bootstrap";
+import Headline1 from '../../../assets/headline1.png'
 
 const Hero = () => {
     return (
@@ -8,8 +9,8 @@ const Hero = () => {
                 <Carousel.Item>
                     <img
                         className="w-75"
-                        src="https://s3.bukalapak.com/bukalapak-kontenz-production/content_attachments/72318/original/IMG_1361.PNG"
-                        alt=""
+                        src={Headline1}
+                        alt="Headline1"
                     />
                 </Carousel.Item>
             </Carousel>

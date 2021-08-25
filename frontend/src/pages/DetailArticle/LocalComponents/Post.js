@@ -3,7 +3,7 @@ import React from 'react'
 const Post = () => {
     return (
         <div>
-            <section>
+            <section style={{textAlign:'justify'}}>
                 The strategic collaboration between Bukalapak and Ashmore Asset Management Indonesia through Buka Investasi Bersama presents an investing solution for all Indonesians. 
 
                 Now investing is easy and fast on a secure platform. 

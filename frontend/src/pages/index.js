@@ -1,4 +1,5 @@
+import LandingPage from "./LandingPage";
 import DetailArticle from "./DetailArticle";
 import SimilarArticle from "./SimilarArticle";
 
-export {DetailArticle , SimilarArticle};
+export { LandingPage, DetailArticle, SimilarArticle };

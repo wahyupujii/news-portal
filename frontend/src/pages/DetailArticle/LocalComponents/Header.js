@@ -1,6 +1,6 @@
 import React from 'react'
 import { Breadcrumb , Row } from 'react-bootstrap'
-import { Hero } from '../../../components'
+import Hero from './Hero'
 
 const Header = () => {
     return (
@@ -19,6 +19,7 @@ const Header = () => {
                         <span className="mx-2">18 Juli 2021</span>
                     </div>
                 </header>
+                
                 <Hero />
             </Row>
         </div>

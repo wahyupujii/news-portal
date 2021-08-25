@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from "react-bootstrap";
-import { Header , Post , Comments, MoreArticles } from './LocalComponents';
+import { Header, Post, Comments, MoreArticles } from './LocalComponents';
 
 const DetailArticle = ({ size }) => {
     return (
@@ -26,15 +26,11 @@ const DetailArticle = ({ size }) => {
 
                     {/* more article from same categories */}
                     <MoreArticles size={size} />
+
+                    
                 </main>
 
             </Container>
-
-            <footer className="p-3" style={{maxHeight: '200px' , backgroundColor: '#eee'}}>
-                <Container>
-                    <h2>Virtual.co.id</h2>
-                </Container>
-            </footer>
         </>
     )
 }

@@ -29,7 +29,7 @@ const Nav = () => {
 
                     <Navbar.Toggle aria-controls="navbarScroll" />
 
-                    <Navbar.Collapse id="navbarScroll" className="px-4 py-2" style={{backgroundColor: 'white'}}>
+                    <Navbar.Collapse id="navbarScroll" className="px-4 py-2" style={{backgroundColor: 'light'}}>
                         <Form className="d-flex w-100">
                             <FormControl
                                 type="search"
