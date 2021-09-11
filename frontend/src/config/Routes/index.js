@@ -1,6 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {DetailArticle , SimilarArticle} from "../../pages";
+import {DetailArticle} from "../../pages";
 
 const Routes = ({size}) => {
     return (
@@ -8,9 +8,6 @@ const Routes = ({size}) => {
             <Switch>
                 <Route exact path="/">
                     <DetailArticle size={size} />
-                </Route>
-                <Route exact path="/more-articles">
-                    <SimilarArticle />
                 </Route>
             </Switch>
         </Router>

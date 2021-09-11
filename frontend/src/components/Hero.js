@@ -1,13 +1,13 @@
 import React from 'react';
 import { Carousel } from "react-bootstrap";
 
-const Hero = () => {
+const Hero = ({size}) => {
     return (
         <div>
             <Carousel>
                 <Carousel.Item>
                     <img
-                        className="w-75"
+                        className={size.width <= 765 ? 'w-100' : 'w-75'}
                         src="https://s3.bukalapak.com/bukalapak-kontenz-production/content_attachments/72318/original/IMG_1361.PNG"
                         alt=""
                     />

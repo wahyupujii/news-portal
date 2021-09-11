@@ -2,7 +2,7 @@ import React from 'react'
 import { Breadcrumb , Row } from 'react-bootstrap'
 import { Hero } from '../../../components'
 
-const Header = () => {
+const Header = ({size}) => {
     return (
         <div>
             {/* breadcrumbs */}
@@ -19,7 +19,7 @@ const Header = () => {
                         <span className="mx-2">18 Juli 2021</span>
                     </div>
                 </header>
-                <Hero />
+                <Hero size={size} />
             </Row>
         </div>
     )

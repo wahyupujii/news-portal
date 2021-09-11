@@ -1,0 +1,49 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+        "title":"Detail Article API",
+        "version":"1.0"
+    },
+    "servers": [
+        {
+            "url": "https://api.server.com"
+        }
+    ],
+    "paths": {
+        "/article/{article_id}" : {
+            "get" : {
+                "summary": "Get Data Article based on article_id",
+                "responses": {
+                    
+                }, 
+                "parameters": [
+                    {
+                        "name": "article_id",
+                        "description" : "Article ID for retrieve specific article data",
+                        "in" : "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/article/comment" : {
+            "post" : {
+                "summary": "Post Comment",
+                "responses": {
+                    
+                },
+                "parameters": [
+                    {
+                        "name": "article_id",
+                        "description": "As a reference that the latest comments will be owned by this article",
+                        "in": "body",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ const DetailArticle = ({ size }) => {
     return (
         <>
             <Container style={{marginTop: '90px'}}>
-                <Header />
+                <Header size={size} />
 
                 <main className="m-auto text-left lh-lg py-4" style={{maxWidth: '800px'}}>
                     {/* Blog Post area */}
@@ -30,7 +30,7 @@ const DetailArticle = ({ size }) => {
 
             </Container>
 
-            <footer className="p-3" style={{maxHeight: '200px' , backgroundColor: '#eee'}}>
+            <footer className="py-3" style={{maxHeight: '200px' , backgroundColor: '#eee'}}>
                 <Container>
                     <h2>Virtual.co.id</h2>
                 </Container>

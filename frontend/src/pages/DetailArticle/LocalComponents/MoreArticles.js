@@ -14,8 +14,8 @@ const MoreArticles = ({ size }) => {
                 </header>
 
                 {/* card articles */}
-                <section className={size.width <= 500 ? '' : 'd-flex justify-content-evenly align-items-center'}>
-                    <Card style={{ width: `${size.width <= 500 ? '100%' : '15rem'}` }} className="my-4 shadow-sm bg-body rounded">
+                <section className={size.width <= 765 ? '' : 'd-flex justify-content-evenly align-items-center'}>
+                    <Card style={{ width: `${size.width <= 765 ? '100%' : '15rem'}` }} className="my-4 shadow-sm bg-body rounded">
                         <Card.Img variant="top" src="https://s0.bukalapak.com/bukalapak-kontenz-production/content_attachments/72410/original/buka_jual_motor.jpeg" />
                         <Card.Body>
                             <Card.Text className="text-danger fw-bold">Berita</Card.Text>
@@ -23,7 +23,7 @@ const MoreArticles = ({ size }) => {
                             <Card.Text className="text-muted">19 Juli 2021</Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card style={{ width: `${size.width <= 500 ? '100%' : '15rem'}` }} className="my-4 shadow-sm bg-body rounded">
+                    <Card style={{ width: `${size.width <= 765 ? '100%' : '15rem'}` }} className="my-4 shadow-sm bg-body rounded">
                         <Card.Img variant="top" src="https://s0.bukalapak.com/bukalapak-kontenz-production/content_attachments/72410/original/buka_jual_motor.jpeg" />
                         <Card.Body>
                             <Card.Text className="text-danger fw-bold">Berita</Card.Text>
@@ -31,7 +31,7 @@ const MoreArticles = ({ size }) => {
                             <Card.Text className="text-muted">19 Juli 2021</Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card style={{ width: `${size.width <= 500 ? '100%' : '15rem'}` }} className="my-4 shadow-sm bg-body rounded">
+                    <Card style={{ width: `${size.width <= 765 ? '100%' : '15rem'}` }} className="my-4 shadow-sm bg-body rounded">
                         <Card.Img variant="top" src="https://s0.bukalapak.com/bukalapak-kontenz-production/content_attachments/72410/original/buka_jual_motor.jpeg" />
                         <Card.Body>
                             <Card.Text className="text-danger fw-bold">Berita</Card.Text>
