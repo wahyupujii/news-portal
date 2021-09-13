@@ -1,21 +1,17 @@
 import React from 'react';
-import { Carousel } from "react-bootstrap";
-import Headline1 from '../../../assets/headline1.png'
+import { Carousel } from 'react-bootstrap';
+import newImage1 from '../assets/newImage1.png';
 
-const Hero = () => {
-    return (
-        <div>
-            <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="w-75"
-                        src={Headline1}
-                        alt="Headline1"
-                    />
-                </Carousel.Item>
-            </Carousel>
-        </div>
-    )
-}
+const Hero = ({ size }) => {
+	return (
+		<div>
+			<Carousel>
+				<Carousel.Item>
+					<img className={size.width <= 765 ? 'w-100' : 'w-75'} src={newImage1} alt='' />
+				</Carousel.Item>
+			</Carousel>
+		</div>
+	);
+};
 
-export default Hero
+export default Hero;

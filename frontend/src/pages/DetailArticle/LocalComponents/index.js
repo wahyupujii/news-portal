@@ -1,6 +1,5 @@
-import Header from "./Header";
-import Post from "./Post";
-import Comments from "./Comments";
-import MoreArticles from "./MoreArticles";
+import Header from './Header';
+import Post from './Post';
+import Comments from './Comments';
 
-export { Header, Post, Comments, MoreArticles };
+export { Header, Post, Comments };

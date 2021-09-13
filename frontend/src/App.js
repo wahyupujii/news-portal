@@ -1,47 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { DetailArticle } from "./pages";
 import { Routes } from './config';
-import { Nav, Footer } from "./components";
 
 const App = () => {
-  const size = useWindowSize();
+	const size = useWindowSize();
 
-  return (
-    <div>
-      <Nav />
-      {/* <DetailArticle size={size} /> */}
-      <Routes size={size} />
-      
-      <Footer />
-    </div>
-  )
-}
+	return (
+		<div>
+			<Routes size={size} />
+
+			<Footer />
+		</div>
+	);
+};
 
 const useWindowSize = () => {
-  const [windowSize , setWindowSize] = useState({
-    width: undefined,
-    height: undefined
-  })
+	const [windowSize, setWindowSize] = useState({
+		width: undefined,
+		height: undefined,
+	});
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight
-      })
-    }
+	useEffect(() => {
+		function handleResize() {
+			setWindowSize({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+		}
 
-    window.addEventListener("resize" , handleResize);
+		window.addEventListener('resize', handleResize);
 
-    handleResize();
+		handleResize();
 
-    return () => window.removeEventListener("resize" , handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
-  } , [])
+	return windowSize;
+};
 
-  return windowSize;
-
-}
-
-export default App
+export default App;

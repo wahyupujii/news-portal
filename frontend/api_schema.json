@@ -1,0 +1,40 @@
+{
+    "/article/{id}" : {  // retrieve specific article
+        "data" : {
+            "article" : {
+                "id" : "integer" ,
+                "admin_id" : "integer" , 
+                "category_id" : "integer",
+                "title" : "string", 
+                "slug" : "string" , 
+                "thumbnail_image" : "string",
+                "header_image" : "string",
+                "content" : "string",
+                "likes" : "integer",
+                "shares" : "integer",
+                "create_date" : "date"
+            },
+            "category": {
+                    "id" : "integer",
+                    "admin_id" : "integer",
+                    "name" : "string"
+            },
+            "comments": [
+                {
+                    "id" : "integer", 
+                    "article_id" : "integer",
+                    "user_id" : "integer",
+                    "comment" : "string",
+                    "create_date" : "date",
+                    "name" : "string", 
+                    "email" : "string" 
+                }
+            ]
+        }
+    },
+    "/article/comment" : {  // post comment 
+        "article_id" : "integer" ,
+        "user_id" : "integer" ,
+        "comment" : "string"
+    }
+}

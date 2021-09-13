@@ -1,5 +1,7 @@
-import LandingPage from "./LandingPage";
-import DetailArticle from "./DetailArticle";
-import SimilarArticle from "./SimilarArticle";
+import LandingPage from './LandingPage';
+import DetailArticle from './DetailArticle';
+import LandingPage from './LandingPage';
+import Login from './Login';
+import Register from './Register';
 
-export { LandingPage, DetailArticle, SimilarArticle };
+export { DetailArticle, LandingPage, Login, Register };

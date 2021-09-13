@@ -35,10 +35,10 @@ const Comments = () => {
                                     <img src="https://s3.bukalapak.com/bukalapak-kontenz-production/content_attachments/72318/original/IMG_1361.PNG" width="50" height="50" className="rounded-circle" style={{marginRight: '20px'}} alt="" />
                                     <h6>Wahyu Puji Ramadhan</h6>
                                 </div>
-                                <h6>19 Juli 2021 at 23:00</h6>
+                                <h6>10 Agustus 2021 at 23:00</h6>
                             </Card.Header>
                             <Card.Body>
-                                <Card.Text>Blog nya bagus sekali , informasinya sangat berguna , terima kasih</Card.Text>
+                                <Card.Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem possimus cumque quibusdam fugiat aliquid? Non ad quibusdam officiis. Aperiam, corporis!</Card.Text>
 
                                 {/* show another reply */}
                                 <Card style={{marginLeft: '20px'}} className="mb-3">
@@ -47,7 +47,7 @@ const Comments = () => {
                                             <img src="https://s3.bukalapak.com/bukalapak-kontenz-production/content_attachments/72318/original/IMG_1361.PNG" width="50" height="50" className="rounded-circle" style={{marginRight: '20px'}} alt="" />
                                             <h6>Wahyu Puji Ramadhan</h6>
                                         </div>
-                                        <h6>19 Juli 2021 at 23:00</h6>
+                                        <h6>10 Agustus 2021 at 23:00</h6>
                                     </Card.Header>
                                     <Card.Body>
                                         <Card.Text>

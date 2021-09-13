@@ -1,6 +1,3 @@
-import Headline from "./Headline"
-import RecArticle from "./RecArticle"
-import Video from "./Video"
-import NewArticle from "./NewArticle"
+import Cards from './Cards';
 
-export { Headline, RecArticle, Video, NewArticle };
+export { Cards };
