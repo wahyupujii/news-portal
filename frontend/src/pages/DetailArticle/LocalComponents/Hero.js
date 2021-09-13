@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import newImage1 from '../assets/newImage1.png';
+// import newImage1 from '../assets/newImage1.png';
+import newImage1 from '../../../assets/newImage1.png';
 
 const Hero = ({ size }) => {
 	return (

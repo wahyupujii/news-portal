@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { DetailArticle } from "./pages";
 import { Routes } from './config';
-
+import Footer from './components/Footer';
 const App = () => {
 	const size = useWindowSize();
 
