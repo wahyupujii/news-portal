@@ -4,24 +4,10 @@ const Post = () => {
     return (
         <div>
             <section>
-                The strategic collaboration between Bukalapak and Ashmore Asset Management Indonesia through Buka Investasi Bersama presents an investing solution for all Indonesians. 
-
-                Now investing is easy and fast on a secure platform. 
-
-                Jakarta, 25 June 2021 -  Mutual Fund selling agent PT Buka Investasi Bersama (“BIB”), a subsidiary of Bukalapak, which in December 2020 forged a strategic partnership with PT Ashmore Asset Management Indonesia Tbk (“Ashmore”), has formally launched the BMoney investment app. 
-
-                BMoney’s tagline “Cuan Jadi Gampang” underlines its ambition to become the easy, fast, and secure investing platform available to everyone. BMoney prioritizes online security and transaction safety while providing convenience with a minimum subscription of Rp1,000, under five minutes registration time, no transaction fee, and portfolio management available 24/7. 
-
-                BMoney’s technology innovation delivers an easy and transparent investment experience, including its Robo Advisory and Insight feature that provides users with market-related information prior to making an investment decision, and the ability for users to monitor and manage their portfolios online anytime and anywhere.
-
-                With Ashmore’s support, based on its 25-year track record of managing funds, BMoney will provide its users with a full range of investment products for experienced investors while also providing valuable financial education to those who are new to the investment market. 
-
-                BMoney also embodies Bukalapak’s commitment to delivering a “Fair Economy for All”, by providing all Indonesians with equality of access to investment through technology. In line with this commitment, BMoney targets 500,000 users in its first year. 
-
-                Buka Investasi Bersama CEO and Bukalapak President, Teddy Oetomo said, “The collaboration between BIB and Ashmore to launch the BMoney app is a synergy between high-quality technology infrastructure, the key strength of Bukalapak, and the capabilities and world-class experience of Ashmore as a reputable investment manager. We are confident that BMoney will contribute positively to the development of financial inclusion in Indonesia and the creation of a fair economy for all.” 
-
-                Furthermore, Teddy emphasized that BIB has an APERD license that is registered and supervised on an ongoing basis by the Financial Services Authority (OJK). 
-            </section>            
+                Jakarta, 13 Juli 2021 - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            </section>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from "react-bootstrap";
+import newImage1 from "../assets/newImage1.png"
 
 const Hero = ({size}) => {
     return (
@@ -8,7 +9,7 @@ const Hero = ({size}) => {
                 <Carousel.Item>
                     <img
                         className={size.width <= 765 ? 'w-100' : 'w-75'}
-                        src="https://s3.bukalapak.com/bukalapak-kontenz-production/content_attachments/72318/original/IMG_1361.PNG"
+                        src={newImage1}
                         alt=""
                     />
                 </Carousel.Item>

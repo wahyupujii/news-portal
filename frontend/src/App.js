@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { DetailArticle } from "./pages";
 import { Routes } from './config';
-import { Nav } from "./components";
 
 const App = () => {
   const size = useWindowSize();
 
   return (
     <div>
-      <Nav />
-      {/* <DetailArticle size={size} /> */}
       <Routes size={size} />
     </div>
   )
