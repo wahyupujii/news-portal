@@ -1,0 +1,11 @@
+a,
+.container .nav-link-home {
+	color: black;
+	font-size: 18px;
+}
+
+a:hover,
+.container .nav-link-home:hover {
+	color: #f25b3a;
+	text-decoration: none;
+}

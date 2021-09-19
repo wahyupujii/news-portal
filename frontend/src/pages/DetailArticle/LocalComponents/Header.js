@@ -1,10 +1,11 @@
 import React from 'react';
-import { Breadcrumb, Row } from 'react-bootstrap';
+import { Breadcrumb, Row, Image } from 'react-bootstrap';
 import Hero from './Hero';
+import Elipse from '../../../assets/elipse.png';
 
 const Header = ({ size }) => {
 	return (
-		<div>
+		<div style={{ fontFamily: 'Open Sans' }}>
 			{/* breadcrumbs */}
 			<Breadcrumb>
 				<Breadcrumb.Item href='#'>
@@ -18,12 +19,31 @@ const Header = ({ size }) => {
 
 			<Row className='d-flex text-center'>
 				<header className='w-75 m-auto'>
-					<h2 className='mb-3'>
+					<p
+						className='mb-3'
+						style={{ fontSize: '30px', letterSpacing: '1px', fontWeight: '500' }}
+					>
 						Virtual.co.id Jadi Startup Pertama yang Melantai di Kancah Internasional
-					</h2>
+					</p>
 					<div className='article-info mb-3'>
-						<span class='badge bg-danger text-light fst-italic mx-2'>Berita</span>
-						<span className='mx-2'>4 Agustus 2021</span>
+						<span
+							className='p-2'
+							style={{
+								backgroundColor: '#3AD1F2',
+								color: '#fff',
+								fontSize: '14px',
+								fontWeight: 'bold',
+								borderRadius: '12px',
+								letterSpacing: '1px',
+							}}
+						>
+							BERITA
+						</span>
+						<span className='mx-3' style={{ fontSize: '18px' }}>
+							Virtual.co.id Comunications{' '}
+						</span>
+						<Image src={Elipse} style={{ height: '7px', width: '7px' }} />
+						<span className='mx-4'>4 Agustus 2021</span>
 					</div>
 				</header>
 				<Hero size={size} />
