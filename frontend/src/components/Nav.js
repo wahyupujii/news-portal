@@ -75,36 +75,18 @@ const Nav = () => {
 								style={{ backgroundColor: 'white' }}
 							>
 								<Form className='d-flex'>
-									{/* <FormControl
-										type='search'
-										placeholder='Search'
-										className='mr-2 py-2'
-										aria-label='Search'
-									/> */}
-									<Form method='get' className='search-bar'>
-										{/* <GoSearch
-											className='icon-search'
-											style={{
-												position: 'absolute',
-												top: '50%',
-												transform: 'translateY(${yPercent}%)',
-												left: '1215px',
-												color: '#fff',
-											}}
-										/> */}
-										<FormControl
-											className='header-search mr-1 py-2'
-											type='text'
-											style={{
-												position: 'relative',
-												height: '35px',
-												width: '353px',
-												backgroundColor: '#F25B3A',
-												opacity: '.34',
-												borderRadius: '10px',
-											}}
-										/>
-									</Form>
+									<FormControl
+										className='header-search mr-1 py-2'
+										type='text'
+										style={{
+											position: 'relative',
+											height: '35px',
+											width: '353px',
+											backgroundColor: '#F25B3A',
+											opacity: '.34',
+											borderRadius: '10px',
+										}}
+									/>
 
 									<Button
 										className='mr-3'
