@@ -1,0 +1,19 @@
+.button-login {
+	border-color: #f25f3e;
+	background-color: #f25f3e;
+}
+
+.button-login:hover {
+	border-color: #de2900;
+	background-color: #de2900;
+}
+
+.button-register {
+	color: #000;
+}
+
+.button-register:hover {
+	border-color: #f25f3e;
+	background-color: #f25f3e;
+	color: #fff;
+}
