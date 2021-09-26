@@ -1,9 +1,34 @@
-import React from 'react';
-import { Container, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
+import React , {useState} from 'react';
+import { Container, Form, Button, InputGroup, FormControl , Spinner } from 'react-bootstrap';
 import Pattern from '../../assets/Pattern';
 import './index.css';
+import axios from "axios"
+import {useHistory} from "react-router-dom"
 
 const Login = () => {
+	const history = useHistory();
+	const [inputs , setInputs] = useState({});
+	const [loading , setLoading] = useState(false)
+
+	const sendData = (e) => {
+		e.preventDefault();
+		setLoading(true)
+		axios.post("http://127.0.0.1:8000/api/auth/login" , {
+			email: inputs.email , 
+			password: inputs.password
+		})
+		.then(user => {
+			setLoading(false)
+			localStorage.setItem("dataUser" , JSON.stringify(user.data.user))
+			window.location.href = "/"
+		})
+		.catch(err => {
+			alert("gagal login")
+			console.error(err)
+			setLoading(false)
+		})
+	}
+
 	return (
 		<>
 			<div style={{ fontFamily: 'Open Sans' }}>
@@ -49,7 +74,7 @@ const Login = () => {
 					</section>
 					<section style={{ width: '50%', height: '100%' }}>
 						<Container className='w-75 h-100 d-flex justify-content-center align-items-center'>
-							<Form style={{ width: '460px' }}>
+							<Form style={{ width: '460px' }} onSubmit={sendData} >
 								<div className='text mb-4'>
 									<h4 className='mb-3' style={{ fontSize: '40px' }}>
 										Hello!
@@ -74,7 +99,9 @@ const Login = () => {
 										placeholder='Email'
 										aria-label='Email'
 										aria-describedby='basic-addon1'
-									/>
+										name="email"
+										onChange={(e) => setInputs({...inputs , [e.target.name]: e.target.value})}
+										/>
 								</InputGroup>
 
 								<InputGroup className='my-4'>
@@ -86,6 +113,8 @@ const Login = () => {
 										aria-label='Password'
 										aria-describedby='basic-addon1'
 										type='password'
+										name="password"
+										onChange={(e) => setInputs({...inputs , [e.target.name]: e.target.value})}
 									/>
 								</InputGroup>
 
@@ -98,7 +127,7 @@ const Login = () => {
 								</Form.Group>
 								<div className='d-flex flex-column align-items-center'>
 									<Button
-										href='/'
+										// href='/'
 										style={{
 											fontWeight: 'bold',
 											borderRadius: '20px',
@@ -106,13 +135,17 @@ const Login = () => {
 										type='submit'
 										className='button-login my-2 w-100 border-0 py-2'
 									>
-										Login
+										{
+											loading ? (
+												<Spinner animation="border" variant="light" />
+											) : ( <span>Login</span> )
+										}
 									</Button>
 									<span style={{ fontSize: '14px' }}>
 										Don't have any account?{' '}
 									</span>
 									<Button
-										href='/register'
+										onClick={() => history.push("/register")}
 										variant='outline-secondary'
 										type='submit'
 										className='my-2 w-100 py-2'

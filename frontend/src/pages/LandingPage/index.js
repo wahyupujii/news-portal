@@ -55,7 +55,7 @@ const LandingPage = ({ size }) => {
 				</div>
 			</Container>
 
-			<section className='mt-3 py-3'>
+			<section className='mt-3 py-3' id="featured-article">
 				<Container style={{ fontFamily: 'Open Sans' }}>
 					<p className='mb-2' style={{ fontWeight: 'bold', fontSize: '24px' }}>
 						Featured Article
@@ -93,7 +93,7 @@ const LandingPage = ({ size }) => {
 				</Container>
 			</section>
 
-			<section className='mt-3 py-3'>
+			<section className='mt-3 py-3' id="latest-article">
 				<Container style={{ fontFamily: 'Open Sans' }}>
 					<p className='mb-2' style={{ fontWeight: 'bold', fontSize: '24px' }}>
 						Latest Article

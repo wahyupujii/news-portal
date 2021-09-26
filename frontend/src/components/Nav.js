@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Navbar,
 	NavDropdown,
@@ -10,19 +10,17 @@ import {
 	NavLink,
 } from 'react-bootstrap';
 import './Nav.css';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import {useHistory} from "react-router-dom"
 
 const Nav = () => {
-	const [loginGoogle, setLoginGoogle] = useState(undefined);
-
-	const responseGoogle = (response) => {
-		setLoginGoogle(response);
-		// if (response !== undefined) {
-		//     localStorage.setItem("")
-		// }
-		console.log(response);
-	};
-
+	// get data dari localStorage
+	const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+	const history = useHistory();
+	const logout = (e) => {
+		e.preventDefault();
+		localStorage.removeItem("dataUser");
+		window.location.href = "/"
+	}
 	return (
 		<div className='mb-4' style={{ fontFamily: 'Open Sans' }}>
 			<Navbar
@@ -56,24 +54,21 @@ const Nav = () => {
 							className='nav-link-dropdown'
 							style={{ fontSize: '18px ', color: '#fff' }}
 						>
-							<NavDropdown.Item href='#action/3.1'>Top Article</NavDropdown.Item>
-							<NavDropdown.Item href='#action/3.1'>Latest Article</NavDropdown.Item>
+							<NavDropdown.Item href='#featured-article'>Top Article</NavDropdown.Item>
+							<NavDropdown.Item href='#latest-article'>Latest Article</NavDropdown.Item>
 						</NavDropdown>
 					</NavItem>
 				</div>
+
 				<div className='container d-flex justify-content-end mr-5'>
-					{window.location.pathname === '/login' ||
-					window.location.pathname === '/register' ? (
-						<span></span>
-					) : (
 						<div>
 							<Navbar.Toggle aria-controls='navbarScroll' />
-
 							<Navbar.Collapse
 								id='navbarScroll'
 								className='px-4 py-2'
 								style={{ backgroundColor: 'white' }}
 							>
+								{/* inputan pencarian */}
 								<Form className='d-flex'>
 									<FormControl
 										className='header-search mr-1 py-2'
@@ -102,64 +97,38 @@ const Nav = () => {
 									>
 										Go
 									</Button>
+								</Form>
 
-									{/* DropDown Login Logout */}
-									{/* Google Login & Logout*/}
-									{loginGoogle !== undefined ? (
-										// google logout
-										<Dropdown className='d-inline mx-2'>
-											<Dropdown.Toggle id='dropdown-autoclose-true'>
-												{loginGoogle === undefined
-													? 'Login'
-													: loginGoogle.profileObj.name}
+								{
+									dataUser !== null ? (
+										<Dropdown>
+											<Dropdown.Toggle variant="primary" id="dropdown-basic">
+												{dataUser.name.charAt(0).toUpperCase()}
 											</Dropdown.Toggle>
 											<Dropdown.Menu>
-												<Dropdown.Item href=''>
-													{/* button logout */}
-													<GoogleLogout
-														clientId='318644210935-oqrhq84njd8776oj81m0fv4fa2ml69sf.apps.googleusercontent.com'
-														buttonText='Logout'
-														onLogoutSuccess={responseGoogle}
-													></GoogleLogout>
-												</Dropdown.Item>
+												<Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
 											</Dropdown.Menu>
 										</Dropdown>
 									) : (
-										// google login
-										<Dropdown className='d-inline mx-2'>
-											<Dropdown.Toggle
-												id='dropdown-autoclose-true'
-												style={{
-													height: '35px',
-													backgroundColor: '#fff',
-													color: '#F25B3A',
-													borderRadius: '10px',
-													borderColor: '#F25B3A',
-												}}
-											>
-												Login
-											</Dropdown.Toggle>
-											<Dropdown.Menu>
-												<Dropdown.Item href='/login'>
-													Akun Anda
-												</Dropdown.Item>
-												<Dropdown.Item href=''>
-													<GoogleLogin
-														clientId='318644210935-oqrhq84njd8776oj81m0fv4fa2ml69sf.apps.googleusercontent.com'
-														buttonText='Login'
-														onSuccess={responseGoogle}
-														onFailure={responseGoogle}
-														cookiePolicy={'single_host_origin'}
-														isSignedIn={true}
-													/>
-												</Dropdown.Item>
-											</Dropdown.Menu>
-										</Dropdown>
-									)}
-								</Form>
+										<Button
+											className='mr-3'
+											style={{
+												height: '35px',
+												backgroundColor: '#F25B3A',
+												borderRadius: '10px',
+												borderColor: '#F25B3A',
+												color: '#fff',
+												fontWeight: 'bold',
+											}}
+											onClick={() => history.push("/login")}
+										>
+											Login
+										</Button>
+									)
+								}
+
 							</Navbar.Collapse>
 						</div>
-					)}
 				</div>
 			</Navbar>
 		</div>

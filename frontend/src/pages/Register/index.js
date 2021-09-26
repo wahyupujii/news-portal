@@ -1,9 +1,36 @@
-import React from 'react';
-import { Container, Form, Button, InputGroup, FormControl } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Container, Form, Button, InputGroup, FormControl, Spinner } from 'react-bootstrap';
 import Pattern from '../../assets/Pattern';
 import './index.css';
+import axios from "axios";
+import {useHistory} from "react-router-dom"
 
 const Login = () => {
+	const [inputs , setInputs] = useState({});
+	const [loading , setLoading] = useState(false);
+	const history = useHistory();
+
+	const sendData = (e) => {
+		e.preventDefault();
+		console.log(inputs)
+		setLoading(true)
+		axios.post("http://127.0.0.1:8000/api/auth/register" , {
+			name : inputs.username,
+			email : inputs.email ,
+			password : inputs.password ,
+			password_confirmation : inputs.password,
+		})
+		.then((user) => {
+			setLoading(false)
+			localStorage.setItem("dataUser" , JSON.stringify(user.data.user));
+			window.location.href = "/"
+		})
+		.catch(err => {
+			console.error(err);
+			alert("user gagal dibuat")
+		})
+	}
+
 	return (
 		<>
 			<div style={{ fontFamily: 'Open Sans' }}>
@@ -49,7 +76,7 @@ const Login = () => {
 					</section>
 					<section style={{ width: '50%', height: '100%' }}>
 						<Container className='w-75 h-100 d-flex justify-content-center align-items-center'>
-							<Form style={{ width: '460px' }}>
+							<Form style={{ width: '460px' }} onSubmit={sendData} >
 								<div className='text mb-4'>
 									<h4 className='mb-3' style={{ fontSize: '40px' }}>
 										Join Us!
@@ -64,6 +91,9 @@ const Login = () => {
 										placeholder='Username'
 										aria-label='Username'
 										aria-describedby='basic-addon1'
+										name="username"
+										required={true}
+										onChange={(e) => setInputs({...inputs , [e.target.name]: e.target.value})}
 									/>
 								</InputGroup>
 
@@ -75,6 +105,9 @@ const Login = () => {
 										placeholder='Email'
 										aria-label='Email'
 										aria-describedby='basic-addon2'
+										name="email"
+										required={true}
+										onChange={(e) => setInputs({...inputs , [e.target.name]: e.target.value})}
 									/>
 								</InputGroup>
 
@@ -87,12 +120,14 @@ const Login = () => {
 										aria-label='Password'
 										aria-describedby='basic-addon3'
 										type='password'
+										name="password"
+										required={true}
+										onChange={(e) => setInputs({...inputs , [e.target.name]: e.target.value})}
 									/>
 								</InputGroup>
 
 								<div className='d-flex flex-column align-items-center'>
 									<Button
-										href='/login'
 										style={{
 											fontWeight: 'bold',
 											borderRadius: '20px',
@@ -100,13 +135,17 @@ const Login = () => {
 										type='submit'
 										className='register-button-register my-2 w-100 border-0 py-2'
 									>
-										Register
+										{
+											loading ? (
+												<Spinner animation="border" variant="light" />
+											) : ( <span>Register</span> )
+										}
 									</Button>
 									<span style={{ fontSize: '14px' }}>
 										Already have an account ?{' '}
 									</span>
 									<Button
-										href='/login'
+										onClick={() => history.push("/login")}
 										variant='outline-secondary'
 										type='submit'
 										className='my-2 w-100 py-2'
