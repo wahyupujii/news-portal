@@ -19,7 +19,7 @@ const Login = () => {
 		})
 		.then(user => {
 			setLoading(false)
-			localStorage.setItem("dataUser" , JSON.stringify(user.data.user))
+			localStorage.setItem("dataUser" , JSON.stringify(user.data))
 			window.location.href = "/"
 		})
 		.catch(err => {

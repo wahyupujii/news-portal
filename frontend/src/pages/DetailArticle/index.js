@@ -1,31 +1,48 @@
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import { Container, Form, FormControl, Button } from 'react-bootstrap';
 import { Header, Post, Comments } from './LocalComponents';
+import axios from "axios"
 
 const DetailArticle = ({ size }) => {
+	// slugnya = slug[2]
+	let slug = window.location.pathname.split("/")
+	const [dataArticle , setDataArticle] = useState({});
+	const [loading , setLoading] = useState(true);
+
+	useEffect(() => {
+		axios.get("http://127.0.0.1:8000/api/articles/show" , {
+			params : {
+				slug: slug[2],
+			}
+		}).then((response) => {
+			setLoading(false);
+			setDataArticle(response.data.data)
+		})
+	} , [])
+
 	return (
 		<>
 			<Container style={{ marginTop: '90px', fontFamily: 'Open Sans' }}>
-				<Header size={size} />
+				{
+					loading ? (
+						<span>Loading ... </span>
+					) : (
+						<>
+							<Header size={size} data={dataArticle} />
 
-				<main className='m-auto text-left lh-lg py-4' style={{ maxWidth: '800px' }}>
-					{/* Blog Post area */}
-					<Post />
+							<main className='m-auto text-left lh-lg py-4' style={{ maxWidth: '800px' }}>
+								{/* Blog Post area */}
+								<Post data={dataArticle} />
+								<hr className='my-4' />
 
-					{/* tags */}
-					{/* <section className='my-4 flex align-items-center'>
-						<span class='badge bg-info text-light fst-italic mx-2 py-2'>
-							virtual.co.id
-						</span>
-					</section> */}
+								{/* Comments Area */}
+								<Comments data={dataArticle} />
 
-					<hr className='my-4' />
-
-					{/* Comments Area */}
-					<Comments />
-
-					<hr className='my-4' />
-				</main>
+								<hr className='my-4' />
+							</main>
+						</>
+					)
+				}
 			</Container>
 
 			<footer

@@ -103,7 +103,7 @@ const Nav = () => {
 									dataUser !== null ? (
 										<Dropdown>
 											<Dropdown.Toggle variant="primary" id="dropdown-basic">
-												{dataUser.name.charAt(0).toUpperCase()}
+												{dataUser.user.name.charAt(0).toUpperCase()}
 											</Dropdown.Toggle>
 											<Dropdown.Menu>
 												<Dropdown.Item onClick={logout}>Logout</Dropdown.Item>

@@ -11,7 +11,7 @@ const Routes = ({ size }) => {
 					<Nav />
 					<LandingPage size={size} />
 				</Route>
-				<Route exact path='/article'>
+				<Route exact path='/article/:slug'>
 					<Nav />
 					<DetailArticle size={size} />
 				</Route>

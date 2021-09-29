@@ -1,9 +1,19 @@
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import { Container, Button, Form, FormControl } from 'react-bootstrap';
-import { Cards } from './LocalComponents';
+import { LatestArticleCard , FeaturedArticleCard } from './LocalComponents';
 import newImage1 from '../../assets/newImage1.png';
+import axios from "axios";
 
 const LandingPage = ({ size }) => {
+	const [articles , setArticles] = useState([]);
+	const [loading , setLoading] = useState(true);
+	useEffect(() => {
+		axios.get("http://127.0.0.1:8000/api/articles")
+		.then((response) => {
+			setLoading(false);
+			setArticles(response.data.data.articles);
+		})
+	} , [])
 	return (
 		<>
 			<Container style={{ marginTop: '70px', fontFamily: 'Open Sans' }} className='p-4'>
@@ -65,9 +75,13 @@ const LandingPage = ({ size }) => {
 						className='d-flex justify-content-evenly flex-wrap'
 						style={{ borderTop: '2px solid black' }}
 					>
-						<Cards />
-						<Cards className='mx-5' />
-						<Cards />
+						{
+							articles.map(article => {
+								return (
+									<LatestArticleCard data={article} />
+								)
+							})
+						}
 					</section>
 				</Container>
 			</section>
@@ -93,6 +107,7 @@ const LandingPage = ({ size }) => {
 				</Container>
 			</section>
 
+			{/* area artikel terbaru */}
 			<section className='mt-3 py-3' id="latest-article">
 				<Container style={{ fontFamily: 'Open Sans' }}>
 					<p className='mb-2' style={{ fontWeight: 'bold', fontSize: '24px' }}>
@@ -103,9 +118,15 @@ const LandingPage = ({ size }) => {
 						className='d-flex justify-content-evenly flex-wrap'
 						style={{ borderTop: '2px solid black' }}
 					>
-						<Cards />
-						<Cards />
-						<Cards />
+						{
+							loading ? (<span>loading ... </span>) : (
+								articles.map(article => {
+									return (
+										<LatestArticleCard data={article} />
+									)
+								})
+							)
+						}
 					</section>
 
 					<section className='d-flex justify-content-center mt-4 mb-5'>

@@ -1,3 +1,4 @@
-import Cards from './Cards';
+import LatestArticleCard from './LatestArticleCard';
+import FeaturedArticleCard from "./FeaturedArticleCard";
 
-export { Cards };
+export { LatestArticleCard , FeaturedArticleCard };
