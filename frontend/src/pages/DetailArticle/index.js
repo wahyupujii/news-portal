@@ -12,14 +12,35 @@ const DetailArticle = ({ size }) => {
 	const [input , setInput] = useState("")
 	let dataUser = JSON.parse(localStorage.getItem("user"))
 
+	const [userLike , setUserLike] = useState(false)
+	const [currentLike, setCurrentLike] = useState(undefined)
+
 	useEffect(() => {
 		axios.get("http://127.0.0.1:8000/api/articles/show", {
 			params: {
 				slug: slug[2],
 			}
 		}).then((response) => {
-			setLoading(false);
 			setDataArticle(response.data.data)
+			// set jumlah like asli dari data di database
+			setCurrentLike(response.data.data.article_likes_count);
+
+			if (localStorage.key("user")) {
+				axios.post("http://127.0.0.1:8000/api/articles/like/show-user-like" , {
+					slug: slug[2],
+					user_id: dataUser.id
+				})
+				.then((res) => {
+					// pasti true kalo data user ada di localStorage
+					setUserLike(res.data.user_like_found)
+					setLoading(false)
+				})
+				.catch((err) => console.log(err))
+			} else {
+				// pasti false kalo data user gaada di localStorage
+				setUserLike(false)
+				setLoading(false)
+			}
 		})
 	}, [])
 
@@ -40,6 +61,35 @@ const DetailArticle = ({ size }) => {
 			alert("anda harus login/register dulu")
 			window.location.href = "/login"
 		}
+	}
+
+	const clickLike = (value) => {
+		let url;
+		if (localStorage.key("user")) {
+			// jika parameter yang di pass bernilai true ?  
+			if (value) {
+				// berarti lakukan like
+				url = "http://127.0.0.1:8000/api/articles/like/store"
+				setCurrentLike(currentLike + 1)
+			} else {
+				// jika tidak berarti user mau ngelakuin unlike
+				url = "http://127.0.0.1:8000/api/articles/like/delete"
+				setCurrentLike(currentLike - 1)
+			}
+			// ganti kondisi icon love dengan setUserLike
+			setUserLike(value)
+
+			axios.post(url , {
+				slug: slug[2],
+				user_id: dataUser.id
+			})
+			.then()
+			.catch(err => console.log(err))
+		} else {
+			alert("anda belum login / register")
+			window.location.href = "/login"
+		}
+
 	}
 
 	return (
@@ -66,8 +116,14 @@ const DetailArticle = ({ size }) => {
 												<h6 className='mb-3'>
 													<span>Comments | </span>
 													<span className='ms-4'>
-														<i className='fa fa-heart' style={{ cursor: 'pointer' }}></i>
-														<span className='ms-2'> {dataArticle.article_likes_count} Likes | </span>
+														{
+															userLike === false ? (
+																<i className='fa fa-heart-o' style={{ cursor: 'pointer' }} onClick={() => clickLike(true)}></i>
+															) : (
+																<i className='fa fa-heart' style={{ cursor: 'pointer' }} onClick={() => clickLike(false)}></i>
+															)
+														}
+														<span className='ms-2'> {currentLike} Likes | </span>
 													</span>
 												</h6>
 												<Form onSubmit={submitComment}>
