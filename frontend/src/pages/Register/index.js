@@ -12,7 +12,6 @@ const Login = () => {
 
 	const sendData = (e) => {
 		e.preventDefault();
-		console.log(inputs)
 		setLoading(true)
 		axios.post("http://127.0.0.1:8000/api/auth/register" , {
 			name : inputs.username,
@@ -22,7 +21,7 @@ const Login = () => {
 		})
 		.then((user) => {
 			setLoading(false)
-			localStorage.setItem("dataUser" , JSON.stringify(user.data.user));
+			localStorage.setItem("user" , JSON.stringify(user.data.user));
 			window.location.href = "/"
 		})
 		.catch(err => {

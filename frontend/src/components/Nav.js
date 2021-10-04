@@ -14,11 +14,11 @@ import {useHistory} from "react-router-dom"
 
 const Nav = () => {
 	// get data dari localStorage
-	const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+	const dataUser = JSON.parse(localStorage.getItem("user"));
 	const history = useHistory();
 	const logout = (e) => {
 		e.preventDefault();
-		localStorage.removeItem("dataUser");
+		localStorage.removeItem("user");
 		window.location.href = "/"
 	}
 	return (
@@ -103,7 +103,7 @@ const Nav = () => {
 									dataUser !== null ? (
 										<Dropdown>
 											<Dropdown.Toggle variant="primary" id="dropdown-basic">
-												{dataUser.user.name.charAt(0).toUpperCase()}
+												{dataUser.name.charAt(0).toUpperCase()}
 											</Dropdown.Toggle>
 											<Dropdown.Menu>
 												<Dropdown.Item onClick={logout}>Logout</Dropdown.Item>

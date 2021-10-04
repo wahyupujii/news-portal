@@ -1,132 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Form, FormControl, Button, Card} from 'react-bootstrap';
-import { Header, Post, Comments } from './LocalComponents';
-import axios from "axios"
+import React from 'react'
+import {Form , FormControl , Button} from "react-bootstrap";
 
-const DetailArticle = ({ size }) => {
-	// slugnya = slug[2]
-	let slug = window.location.pathname.split("/")
-	const [dataArticle, setDataArticle] = useState({});
-	const [loading, setLoading] = useState(true);
-
-	const [input , setInput] = useState("")
-	let dataUser = JSON.parse(localStorage.getItem("user"))
-
-	useEffect(() => {
-		axios.get("http://127.0.0.1:8000/api/articles/show", {
-			params: {
-				slug: slug[2],
-			}
-		}).then((response) => {
-			setLoading(false);
-			setDataArticle(response.data.data)
-			console.log(response.data.data)
-		})
-	}, [])
-
-	const submitComment = (e) => {
-		e.preventDefault()
-		// pengecekan bila user sudah login
-		if (localStorage.key("user")) {
-			axios.post("http://127.0.0.1:8000/api/articles/comment/store" , {
-				slug: dataArticle.article.slug,
-				content: input,
-				user_id: dataUser.id
-			})
-			.then(() => {
-				window.location.href = `/article/${dataArticle.article.slug}`
-			})
-			.catch(err => console.log(err))
-		} else {
-			alert("anda harus login/register dulu")
-			window.location.href = "/login"
-		}
-	}
-
-	return (
-		<>
-			<Container style={{ marginTop: '90px', fontFamily: 'Open Sans' }}>
-				{
-					loading ? (
-						<span>Loading ... </span>
-					) : (
-						<>
-							<Header size={size} data={dataArticle} />
-
-							<main className='m-auto text-left lh-lg py-4' style={{ maxWidth: '800px' }}>
-								{/* Blog Post area */}
-								<Post data={dataArticle} />
-								<hr className='my-4' />
-
-								{/* Comments Area */}
-								{/* <Comments data={dataArticle} /> */}
-								{
-									Object.keys(dataArticle).length === 0 ? ( <span>Loading ...</span> ) : (
-										<section className='mb-4'>
-											<div className='comment'>
-												<h6 className='mb-3'>
-													<span>Comments | </span>
-													<span className='ms-4'>
-														<i className='fa fa-heart' style={{ cursor: 'pointer' }}></i>
-														<span className='ms-2'> {dataArticle.article_likes_count} Likes | </span>
-													</span>
-												</h6>
-												<Form onSubmit={submitComment}>
-													<Form.Group className='mb-3'>
-														<Form.Control as='textarea' row={5} placeholder='Comment here' onChange={(e) => setInput(e.target.value)} />
-													</Form.Group>
-													<Button
-														style={{
-															backgroundColor: '#F25B3A',
-															borderRadius: '12px',
-															borderColor: '#F25B3A',
-															fontSize: '16px',
-														}}
-														type='submit'
-													>
-														Submit
-													</Button>
-												</Form>
-												<br />
-												<div>
-													<h6>{dataArticle.article_comments_count} Comments</h6>
-													{
-														dataArticle.article_comments.map((comment , index) => {
-															return (
-																<Card className='mb-4' key={index}>
-																	<Card.Header
-																		as='h5'
-																		className='d-flex justify-content-between align-items-center'
-																	>
-																		<div className='account d-flex align-items-center'>
-																			<h6>{comment.name}</h6>
-																		</div>
-																		<h6>{comment.date}</h6>
-																	</Card.Header>
-																	<Card.Body>
-																		<Card.Text>
-																			{comment.content}
-																		</Card.Text>
-																	</Card.Body>
-																</Card>
-															)
-														})
-													}
-												</div>
-											</div>
-										</section>
-									)
-								}
-
-
-								<hr className='my-4' />
-							</main>
-						</>
-					)
-				}
-			</Container>
-
-			<footer
+const FooterLink = () => {
+    return (
+        <>
+            <footer
 				className='py-4'
 				style={{ backgroundColor: '#666666', color: '#fff', fontFamily: 'Open Sans' }}
 			>
@@ -337,23 +215,9 @@ const DetailArticle = ({ size }) => {
 						</ul>
 					</div>
 				</div>
-			</footer>
-			<footer
-				className='p-3'
-				style={{
-					maxHeight: '200px',
-					backgroundColor: '#222222',
-					bottom: '0',
-					left: '0',
-					right: '0',
-				}}
-			>
-				<span style={{ color: '#fff', opacity: '0.6', marginLeft: '70px' }}>
-					Powered by PT Otak Kanan
-				</span>
-			</footer>
-		</>
-	);
-};
+			</footer>   
+        </>
+    )
+}
 
-export default DetailArticle;
+export default FooterLink
